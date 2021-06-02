@@ -6,29 +6,36 @@ type Lolly {
     c1: String!
     c2: String!
     c3: String!
-    link: String!
-}
+    link: ID!
+  }
 
-input LollyInput {
-    recipient: String!
-    message: String!
-    sender: String!
-    c1: String!
-    c2: String!
-    c3: String!
-    link: String!
+input LollyInput{
+      recipient: String!, 
+      message: String!,
+      sender: String!, 
+      c1: String!,
+      c2: String!,
+      c3: String!
+      link: String!
 }
 
 
 type Query{
     getLollies: [Lolly!]
-    getLollyByID(id: String!): Lolly!
-
+    getLollybyID(id: String!): Lolly!
+    getLollybyLink(link: String!): Lolly!
 }
 
-type Mutation{
-    # createLolly(recipient: String! message: String! sender: String! c1: String! c2: String! c3: String!): Lolly
-    createLolly(LollyInfo: LollyInput): Lolly
-    deleteLolly(id: String): Lolly
+type Mutation {
+    createLolly (
+      recipient: String!, 
+      message: String!,
+      sender: String!, 
+      c1: String!,
+      c2: String!,
+      c3: String!
+      link: String!) : Lolly
 
+
+      deleteLolly(id: String!): Lolly!
 }
